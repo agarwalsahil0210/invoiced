@@ -1,16 +1,19 @@
 import 'dart:io';
+import 'homepage.dart';
 import 'openpdf.dart';
 import 'package:syncfusion_flutter_pdf/pdf.dart';
 import 'package:flutter/material.dart';
 
 class PdfHelper extends StatelessWidget {
   final String name, email, phone, cname;
-  const PdfHelper(
+  List<Item> itemList = [];
+  PdfHelper(
       {Key? key,
       required this.name,
       required this.email,
       required this.phone,
-      required this.cname})
+      required this.cname,
+      required this.itemList})
       : super(key: key);
 
   @override
@@ -34,20 +37,24 @@ class PdfHelper extends StatelessWidget {
     final page = document.pages.add();
 
     page.graphics.drawString(
-        'Welcome $name', PdfStandardFont(PdfFontFamily.helvetica, 30),
+        'Name: $name', PdfStandardFont(PdfFontFamily.helvetica, 30),
         bounds: const Rect.fromLTWH(0, 20, 500, 200));
     page.graphics.drawString(
-        'Welcome $email', PdfStandardFont(PdfFontFamily.helvetica, 30),
+        'Email: $email', PdfStandardFont(PdfFontFamily.helvetica, 30),
         bounds: const Rect.fromLTWH(0, 60, 500, 200));
     page.graphics.drawString(
-        'Welcome $phone', PdfStandardFont(PdfFontFamily.helvetica, 30),
+        'Phone no: $phone', PdfStandardFont(PdfFontFamily.helvetica, 30),
         bounds: const Rect.fromLTWH(0, 100, 500, 200));
     page.graphics.drawString(
-        'Welcome $cname', PdfStandardFont(PdfFontFamily.helvetica, 30),
+        'Comapny name : $cname', PdfStandardFont(PdfFontFamily.helvetica, 30),
         bounds: const Rect.fromLTWH(0, 140, 500, 200));
+    page.graphics.drawString('Item name : ${itemList[0].title}',
+        PdfStandardFont(PdfFontFamily.helvetica, 30),
+        bounds: const Rect.fromLTWH(0, 180, 500, 200));
     List<int> bytes = document.save();
     document.dispose();
 
-    saveandopen(bytes, 'Output.pdf');
+    saveandopen(bytes, 'Bill.pdf');
+    print(itemList[0].title);
   }
 }

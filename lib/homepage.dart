@@ -7,7 +7,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  String name = "", email = "", phone = "", cname = "";
+  String name = "", email = "", phone = "", cname = "", itemtitle = "";
   bool changeButton = false;
 
   final _formKey = GlobalKey<FormState>();
@@ -39,6 +39,17 @@ class _HomePageState extends State<HomePage> {
                     style: TextStyle(
                       fontSize: 28,
                       fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20.0,
+                  ),
+                  Text(
+                    "Get your bill in seconds with Invoiced",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w300,
+                      fontStyle: FontStyle.italic,
                     ),
                   ),
                   SizedBox(
@@ -119,8 +130,26 @@ class _HomePageState extends State<HomePage> {
                         SizedBox(
                           height: 40.0,
                         ),
+                        TextFormField(
+                          decoration: InputDecoration(
+                            hintText: "Enter item name",
+                            labelText: "Item Name",
+                          ),
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return "Item name cannot be empty";
+                            }
+                            return null;
+                          },
+                          onChanged: (value) {
+                            itemtitle = value;
+
+                            setState(() {});
+                          },
+                        ),
                         RaisedButton(
                           onPressed: () {
+                            addTaskAndAmount(itemtitle, "200");
                             Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -128,7 +157,8 @@ class _HomePageState extends State<HomePage> {
                                     name: name,
                                     email: email,
                                     phone: phone,
-                                    cname: cname),
+                                    cname: cname,
+                                    itemList: itemList),
                               ),
                             );
                           },
@@ -148,5 +178,35 @@ class _HomePageState extends State<HomePage> {
             ),
           )),
     );
+  }
+
+  final List<Item> itemList = [];
+
+  void addTaskAndAmount(String title, String amount) {
+    final item = Item(
+      id: DateTime.now().toString(),
+      title: title,
+      amount: amount,
+    );
+    setState(() {
+      itemList.add(item);
+    });
+  }
+}
+
+class Item extends StatefulWidget {
+  final String id, title, amount;
+  const Item(
+      {Key? key, required this.id, required this.title, required this.amount})
+      : super(key: key);
+
+  @override
+  _ItemState createState() => _ItemState();
+}
+
+class _ItemState extends State<Item> {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 }

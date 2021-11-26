@@ -22,7 +22,8 @@ class PdfHelper extends StatelessWidget {
       body: Container(
         child: Center(
           child: RaisedButton(
-            child: Text('Generate PDF'),
+            color: Colors.deepPurple[500],
+            child: Text('Generate Bill', style: TextStyle(color: Colors.white)),
             onPressed: () {
               _createPDF();
             },
@@ -37,20 +38,20 @@ class PdfHelper extends StatelessWidget {
     final page = document.pages.add();
 
     page.graphics.drawString(
-        'Name: $name', PdfStandardFont(PdfFontFamily.helvetica, 30),
+        'Name: $name', PdfStandardFont(PdfFontFamily.helvetica, 20),
         bounds: const Rect.fromLTWH(0, 20, 500, 200));
     page.graphics.drawString(
-        'Email: $email', PdfStandardFont(PdfFontFamily.helvetica, 30),
+        'Email: $email', PdfStandardFont(PdfFontFamily.helvetica, 20),
         bounds: const Rect.fromLTWH(0, 60, 500, 200));
     page.graphics.drawString(
-        'Phone no: $phone', PdfStandardFont(PdfFontFamily.helvetica, 30),
+        'Phone no: $phone', PdfStandardFont(PdfFontFamily.helvetica, 20),
         bounds: const Rect.fromLTWH(0, 100, 500, 200));
     page.graphics.drawString(
-        'Comapny name : $cname', PdfStandardFont(PdfFontFamily.helvetica, 30),
+        'Comapny name : $cname', PdfStandardFont(PdfFontFamily.helvetica, 20),
         bounds: const Rect.fromLTWH(0, 140, 500, 200));
-    page.graphics.drawString('Item name : ${itemList[0].title}',
-        PdfStandardFont(PdfFontFamily.helvetica, 30),
-        bounds: const Rect.fromLTWH(0, 180, 500, 200));
+    page.graphics.drawString('Item bought : ${itemList[0].title}',
+        PdfStandardFont(PdfFontFamily.helvetica, 20),
+        bounds: const Rect.fromLTWH(0, 300, 500, 200));
     List<int> bytes = document.save();
     document.dispose();
 

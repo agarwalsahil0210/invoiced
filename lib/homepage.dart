@@ -128,7 +128,7 @@ class _HomePageState extends State<HomePage> {
                           },
                         ),
                         SizedBox(
-                          height: 40.0,
+                          height: 20.0,
                         ),
                         TextFormField(
                           decoration: InputDecoration(

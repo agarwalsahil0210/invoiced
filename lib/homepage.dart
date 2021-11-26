@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> {
                   Text(
                     "Welcome $name",
                     style: TextStyle(
-                      fontSize: 28,
+                      fontSize: 25,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -45,9 +45,9 @@ class _HomePageState extends State<HomePage> {
                     height: 20.0,
                   ),
                   Text(
-                    "Get your bill in seconds with Invoiced",
+                    "Get your invoice in seconds with Invoiced",
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 18,
                       fontWeight: FontWeight.w300,
                       fontStyle: FontStyle.italic,
                     ),
@@ -64,6 +64,10 @@ class _HomePageState extends State<HomePage> {
                           decoration: InputDecoration(
                             hintText: "Enter name",
                             labelText: "Name",
+                            border: new OutlineInputBorder(
+                              borderRadius: new BorderRadius.circular(25.0),
+                              borderSide: new BorderSide(),
+                            ),
                           ),
                           validator: (value) {
                             if (value!.isEmpty) {
@@ -77,10 +81,17 @@ class _HomePageState extends State<HomePage> {
                             setState(() {});
                           },
                         ),
+                        SizedBox(
+                          height: 20.0,
+                        ),
                         TextFormField(
                           decoration: InputDecoration(
                             hintText: "Enter email",
                             labelText: "Email",
+                            border: new OutlineInputBorder(
+                              borderRadius: new BorderRadius.circular(25.0),
+                              borderSide: new BorderSide(),
+                            ),
                           ),
                           validator: (value) {
                             if (value!.isEmpty) {
@@ -94,10 +105,17 @@ class _HomePageState extends State<HomePage> {
                             setState(() {});
                           },
                         ),
+                        SizedBox(
+                          height: 20.0,
+                        ),
                         TextFormField(
                           decoration: InputDecoration(
                             hintText: "Enter phone number",
                             labelText: "Phone ",
+                            border: new OutlineInputBorder(
+                              borderRadius: new BorderRadius.circular(25.0),
+                              borderSide: new BorderSide(),
+                            ),
                           ),
                           validator: (value) {
                             if (value!.isEmpty) {
@@ -110,10 +128,17 @@ class _HomePageState extends State<HomePage> {
                             setState(() {});
                           },
                         ),
+                        SizedBox(
+                          height: 20.0,
+                        ),
                         TextFormField(
                           decoration: InputDecoration(
                             hintText: "Enter company name",
                             labelText: "Company Name",
+                            border: new OutlineInputBorder(
+                              borderRadius: new BorderRadius.circular(25.0),
+                              borderSide: new BorderSide(),
+                            ),
                           ),
                           validator: (value) {
                             if (value!.isEmpty) {
@@ -134,6 +159,10 @@ class _HomePageState extends State<HomePage> {
                           decoration: InputDecoration(
                             hintText: "Enter item name",
                             labelText: "Item Name",
+                            border: new OutlineInputBorder(
+                              borderRadius: new BorderRadius.circular(25.0),
+                              borderSide: new BorderSide(),
+                            ),
                           ),
                           validator: (value) {
                             if (value!.isEmpty) {
@@ -147,7 +176,18 @@ class _HomePageState extends State<HomePage> {
                             setState(() {});
                           },
                         ),
-                        RaisedButton(
+                        SizedBox(
+                          height: 20.0,
+                        ),
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.deepPurple,
+                            // minimumSize: Size.fromHeight(40),
+                            fixedSize: const Size(120, 40),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25.0),
+                            ),
+                          ),
                           onPressed: () {
                             addTaskAndAmount(itemtitle, "200");
                             Navigator.push(
@@ -168,8 +208,7 @@ class _HomePageState extends State<HomePage> {
                               color: Colors.white,
                             ),
                           ),
-                          color: Colors.deepPurple,
-                        ),
+                        )
                       ],
                     ),
                   )

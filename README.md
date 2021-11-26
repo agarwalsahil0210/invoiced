@@ -1,6 +1,6 @@
 # invoiced
 
-A new Flutter project.
+Invoiced is a flutter app where you can create your invoice in seconds! 
 
 ## Getting Started
 
